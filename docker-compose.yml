@@ -10,9 +10,9 @@ services:
       # POSTGRES_USER: postgres
       # POSTGRES_PASSWORD: example
       # POSTGRES_DB: m7-abp_1
-      POSTGRES_USER: usuario
+      POSTGRES_USER: root
       POSTGRES_PASSWORD: 123456
-      POSTGRES_DB: usuarios
+      POSTGRES_DB: m7-abpro_1
     ports:
       - 5432:5432
 

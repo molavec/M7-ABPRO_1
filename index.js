@@ -1,27 +1,105 @@
 const { Pool, Client } = require('pg');
-// const connectionString = 'postgresql://postgres:example@localhost:5432/m7-abp_1';
 
-const connectionString = 'postgresql://usuario:123456@localhost:5432/usuarios';
+const NIVEL = {
+  EXPERTO: 'EXPERTO',
+  BASICO: 'BASICO'
+}
 
 const pool = new Pool({
-  connectionString,
-});
-
-pool.query('select now()', (err, res) => {
-  console.log(err, res);
-  pool.end();
-})
-
-const client = new Client({
   host: 'localhost',
-  user: 'usuario',
+  user: 'root',
   password: '123456',
   port: 5432,
-  database: 'usuarios',
+  database: 'm7-abpro_1',
 });
 
-client.connect();
-client.query('select now()', (err, res) => {
-  console.log(err, res);
-  client.end();
-});
+pool.connect();
+
+/**
+ * add
+ */
+const addStudent = () => {
+  //TODO
+  const query = '';
+  pool.query(query, (err, res) => {
+    if (err) {
+      console.log('Error: ', err);
+    }
+    console.log('result: ', res);  
+  });
+}
+
+
+/**
+ * select all student
+ */
+const getAllStudents = () => {
+  //TODO
+  const query = '';
+  pool.query(query, (err, res) => {
+    if (err) {
+      console.log('Error: ', err);
+    }
+    console.log('result: ', res);  
+  });
+}
+
+
+/**
+ * select by rut 
+ */
+const getStudentByRut = () => {
+  //TODO
+  const query = '';
+  pool.query(query, (err, res) => {
+    if (err) {
+      console.log('Error: ', err);
+    }
+    console.log('result: ', res);  
+  });
+}
+
+
+/**
+ * update Student
+ */
+const updateStudent = () => {
+  //TODO
+  const query = '';
+  pool.query(query, (err, res) => {
+    if (err) {
+      console.log('Error: ', err);
+    }
+    console.log('result: ', res);  
+  });
+}
+
+
+/**
+ * delete student
+ */
+const deleteStudent = () => {
+  //TODO
+  const query = '';
+  pool.query(query, (err, res) => {
+    if (err) {
+      console.log('Error: ', err);
+    }
+    console.log('result: ', res);  
+  });
+}
+
+
+// ejecuata la funcion
+var data = {
+  nombre: 'Juan Perez',
+  rut: '11111111-1',
+  curso: '1',
+  nivel: NIVEL.EXPERTO,
+}
+
+// addStudent(data);
+// getAllStudents();
+// getStudentByRut(rut);
+// updateStudent(data);
+// deleteStudent(rut);
