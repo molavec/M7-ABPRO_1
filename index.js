@@ -179,10 +179,8 @@ if(command == 'editar') {
 
   return 0;
 }
-if(command == 'elimina') {
-    const rutDelete = {
-      rut:process.argv[12]
-    }
+if(command == 'eliminar') {
+    const rutDelete = process.argv[3];
 
   console.log('llamando a funcion para eliminar usuario', rutDelete );
   deleteStudent(rutDelete)
