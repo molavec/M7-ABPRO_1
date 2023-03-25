@@ -27,7 +27,6 @@ if(command == 'select') {
   addStudent(data)
   return 0;
 }
-
 if(command == 'getByRut') {
     const rut = {
       rut:process.argv[7]
@@ -37,7 +36,6 @@ if(command == 'getByRut') {
   getStudentByRut(rut)
   return 0;
 }
-
 if(command == 'actualizar') {
   const estudianteEditado = {
     nombre: process.argv[8],
@@ -52,10 +50,6 @@ if(command == 'actualizar') {
 
   return 0;
 }
-
-
-
-
 if(command == 'elimina') {
     const rutDelete = {
       rut:process.argv[12]
@@ -65,6 +59,14 @@ if(command == 'elimina') {
   deleteStudent(rutDelete)
   return 0;
 }
+
+console.log("no se reconoce ningun comando :(")
+
+  return -1
+
+
+
+
 
 
 
