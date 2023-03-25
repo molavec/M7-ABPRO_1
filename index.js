@@ -1,5 +1,75 @@
 const { Pool, Client } = require('pg');
 
+process.argv.forEach((val, index) => {
+  console.log(`${index}: ${val}`);
+});
+
+const command =  process.argv[2];
+console.log('command', command);
+
+if(command == 'nuevo') {
+  
+  const estudiante = {
+    nombre: process.argv[3],
+    rut: process.argv[4],
+    curso: process.argv[5],
+    nival: process.argv[6],
+  };
+
+  console.log('Ingresando estudiante', estudiante);
+
+  // addStudent(estudiante);
+
+  return 0;
+}
+if(command == 'select') {
+  console.log('llamando a funcion para obtener los usuarios');
+  addStudent(data)
+  return 0;
+}
+if(command == 'getByRut') {
+    const rut = {
+      rut:process.argv[7]
+    }
+
+  console.log('llamando a funcion para eliminar usuario', rut );
+  getStudentByRut(rut)
+  return 0;
+}
+if(command == 'actualizar') {
+  const estudianteEditado = {
+    nombre: process.argv[8],
+    rut: process.argv[9],
+    curso: process.argv[10],
+    nival: process.argv[11],
+  };
+
+  console.log('estudiante actualizado', estudianteEditado);
+
+  updateStudent(estudianteEditado)
+
+  return 0;
+}
+if(command == 'elimina') {
+    const rutDelete = {
+      rut:process.argv[12]
+    }
+
+  console.log('llamando a funcion para eliminar usuario', rutDelete );
+  deleteStudent(rutDelete)
+  return 0;
+}
+
+console.log("no se reconoce ningun comando :(")
+
+  return -1
+
+
+
+
+
+
+
 const NIVEL = {
   EXPERTO: 'EXPERTO',
   BASICO: 'BASICO'
@@ -127,6 +197,10 @@ var updatestudent1 = {
 // addStudent(data);
 // getAllStudents();
 // getStudentByRut(rut);
+<<<<<<< HEAD
 updateStudent(updatestudent1);
+=======
+// updateStudent(data);
+>>>>>>> 8a9e5e6107ed3f0b20da75d9fe12e84dacb12ff0
 // deleteStudent(rut);
 
