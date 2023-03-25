@@ -7,61 +7,6 @@ process.argv.forEach((val, index) => {
 const command =  process.argv[2];
 console.log('command', command);
 
-if(command == 'nuevo') {
-  
-  const estudiante = {
-    nombre: process.argv[3],
-    rut: process.argv[4],
-    curso: process.argv[5],
-    nivel: process.argv[6],
-  };
-
-  console.log('Ingresando estudiante', estudiante);
-
-  addStudent(estudiante);
-
-  return 0;
-}
-if(command == 'traer') {
-  console.log('llamando a funcion para obtener los usuarios');
-  getAllStudents();
-  return 0;
-}
-if(command == 'getByRut') {
-    const rut = {
-      rut:process.argv[7]
-    }
-
-  console.log('llamando a funcion para eliminar usuario', rut );
-  getStudentByRut(rut)
-  return 0;
-}
-if(command == 'actualizar') {
-  const estudianteEditado = {
-    nombre: process.argv[8],
-    rut: process.argv[9],
-    curso: process.argv[10],
-    nival: process.argv[11],
-  };
-
-  console.log('estudiante actualizado', estudianteEditado);
-
-  updateStudent(estudianteEditado)
-
-  return 0;
-}
-if(command == 'elimina') {
-    const rutDelete = {
-      rut:process.argv[12]
-    }
-
-  console.log('llamando a funcion para eliminar usuario', rutDelete );
-  deleteStudent(rutDelete)
-  return 0;
-}
-
-console.log("no se reconoce ningun comando :(")
-return -1;
 
 
 
@@ -174,39 +119,61 @@ const deleteStudent = (rut) => {
   });
 }
 
+if(command == 'nuevo') {
+  
+  const estudiante = {
+    nombre: process.argv[3],
+    rut: process.argv[4],
+    curso: process.argv[5],
+    nivel: process.argv[6],
+  };
 
-// ejecuata la funcion
-var data = {
-  nombre: 'Juan Perez',
-  rut: '11111111-1',
-  curso: '1',
-  nivel: NIVEL.EXPERTO,
+  console.log('Ingresando estudiante', estudiante);
+
+  addStudent(estudiante);
+
+  return 0;
+}
+if(command == 'traer') {
+  console.log('llamando a funcion para obtener los usuarios');
+  getAllStudents();
+  return 0;
+}
+if(command == 'getByRut') {
+    const rut = {
+      rut:process.argv[7]
+    }
+
+  console.log('llamando a funcion para eliminar usuario', rut );
+  getStudentByRut(rut)
+  return 0;
+}
+if(command == 'actualizar') {
+  const estudianteEditado = {
+    nombre: process.argv[8],
+    rut: process.argv[9],
+    curso: process.argv[10],
+    nival: process.argv[11],
+  };
+
+  console.log('estudiante actualizado', estudianteEditado);
+
+  updateStudent(estudianteEditado)
+
+  return 0;
+}
+if(command == 'elimina') {
+    const rutDelete = {
+      rut:process.argv[12]
+    }
+
+  console.log('llamando a funcion para eliminar usuario', rutDelete );
+  deleteStudent(rutDelete)
+  return 0;
 }
 
-var rut = "22222222-2";
-
-var updatestudent1 = {
-  nombre: 'Dani Ortega',
-  rut: '23321777-5',
-  nivel: '7',
-  curso: 'guitarra'
-}
-
-
-var estudiante1 = {
-  nombre: 'Pablito',
-  rut: '20369584-9',
-  curso: 'Artes Visuales',
-  nivel: '10'
-}
-var updateStudent1 = {
-  nombre: 'Pablo Lazcano',
-  rut: '20569874-2',
-  curso: 'Programacion en Cobol',
-  nivel: '1'
-}
-addStudent(estudiante1)
-updateStudent(updateStudent1)
+console.log("no se reconoce ningun comando :(")
+return -1;
 
 
 
