@@ -35,7 +35,7 @@ const addStudent = () => {
  */
 const getAllStudents = () => {
   //TODO
-  const query = '';
+  const query = 'SELECT id,nombre,rut,curso,nivel FROM estudiante;';
   pool.query(query, (err, res) => {
     if (err) {
       console.log('Error: ', err);
@@ -65,7 +65,7 @@ const getStudentByRut = () => {
  */
 const updateStudent = () => {
   //TODO
-  const query = '';
+  const query = 'SELECT * FROM estudiante';
   pool.query(query, (err, res) => {
     if (err) {
       console.log('Error: ', err);
@@ -99,7 +99,7 @@ var data = {
 }
 
 // addStudent(data);
-// getAllStudents();
+getAllStudents();
 // getStudentByRut(rut);
 // updateStudent(data);
 // deleteStudent(rut);
