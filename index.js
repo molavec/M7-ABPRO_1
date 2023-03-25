@@ -132,14 +132,23 @@ const getStudentByRut = (rut) => {
 /**
  * update Student
  */
-const updateStudent = () => {
-  //TODO
-  const query = 'SELECT * FROM estudiante';
+const updateStudent = (estudianteEditado) => {
+  console.log('Ejecucion update...')
+  
+  console.log(estudianteEditado.nombre)
+
+  const query = `
+    UPDATE estudiante 
+    SET 
+      nombre='${estudianteEditado.nombre}',
+      nivel='${estudianteEditado.nivel}', 
+      curso='${estudianteEditado.curso}' 
+      WHERE rut='${estudianteEditado.rut}'`;
   pool.query(query, (err, res) => {
     if (err) {
       console.log('Error: ', err);
+      return;
     }
-    console.log('result: ', res);  
   });
 }
 
@@ -176,6 +185,14 @@ var data = {
 
 var rut = "22222222-2";
 
+var updatestudent1 = {
+  nombre: 'Dani Ortega',
+  rut: '23321777-5',
+  nivel: '7',
+  curso: 'guitarra'
+}
+
+
 var estudiante1 = {
   nombre: 'Pablito',
   rut: '20369584-9',
@@ -194,7 +211,5 @@ updateStudent(updateStudent1)
 
 
 
-// getAllStudents();
-// getStudentByRut(rut);
-// deleteStudent(rut);
+
 
