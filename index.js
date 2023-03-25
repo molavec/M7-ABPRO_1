@@ -78,12 +78,12 @@ const getAllStudents = () => {
  */
 const getStudentByRut = (rut) => {
   //TODO
-  const query = `select * from estudiante where rut = ${rut.rut} `;
+  const query = `select * from estudiante where rut = '${rut}' `;
   pool.query(query, (err, res) => {
     if (err) {
       console.log('Error: ', err);
     }
-    console.log('result: ', res);  
+    console.table(res.rows);  
   });
 }
 
@@ -150,12 +150,10 @@ if(command == 'traer') {
   getAllStudents();
   return 0;
 }
-if(command == 'getByRut') {
-    const rut = {
-      rut:process.argv[7]
-    }
+if(command == 'rut') {
+    const rut = process.argv[3];
 
-  console.log('llamando a funcion para eliminar usuario', rut );
+  console.log('llamando a usuarios con rut: ', rut );
   getStudentByRut(rut)
   return 0;
 }
