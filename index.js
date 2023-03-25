@@ -1,18 +1,5 @@
 const { Pool, Client } = require('pg');
 
-process.argv.forEach((val, index) => {
-  console.log(`${index}: ${val}`);
-});
-
-const command =  process.argv[2];
-console.log('command', command);
-
-
-
-
-
-
-
 
 const NIVEL = {
   EXPERTO: 'EXPERTO',
@@ -21,26 +8,53 @@ const NIVEL = {
 
 const pool = new Pool({
   host: 'localhost',
-  user: 'postgres',
-  password: '2023',
+  user: 'root',
+  password: '123456',
   port: 5432,
   database: 'm7-abpro_1',
 });
 
 pool.connect();
 
+
+const command = process.argv[2];
+
 /**
  * add
  */
 const addStudent = (estudiante) => {
-  //TODO
-  const query = `INSERT INTO estudiante (nombre,rut,curso,nivel) value (${estudiante.nombre}, ${estudiante.rut}, ${estudiante.curso}, ${estudiante.nivel})`;
+  const query = `
+    INSERT INTO 
+    estudiante 
+      (
+        nombre,
+        rut,
+        curso,
+        nivel
+      ) 
+    values
+      (
+        '${estudiante.nombre}',
+        '${estudiante.rut}',
+        '${estudiante.curso}',
+        '${estudiante.nivel}'
+      );
+      `;
+
+  console.log('query', query)
   pool.query(query, (err, res) => {
     if (err) {
       console.log('Error: ', err);
+      return -1;
     }
-    console.tables('result: ', res);  
+    if(res.rowCount > 0) {
+      console.log('Usuario agregado con éxito!');
+    } else {
+      console.log('No fue posible agregar estudiante!');
+    }
+    return 0;
   });
+  return;
 }
 
 
@@ -120,20 +134,17 @@ const deleteStudent = (rut) => {
 }
 
 if(command == 'nuevo') {
-  
   const estudiante = {
     nombre: process.argv[3],
     rut: process.argv[4],
     curso: process.argv[5],
     nivel: process.argv[6],
   };
-
-  console.log('Ingresando estudiante', estudiante);
-
+  // console.log('Ingresando estudiante', estudiante);
   addStudent(estudiante);
+  return;
+};
 
-  return 0;
-}
 if(command == 'traer') {
   console.log('llamando a funcion para obtener los usuarios');
   getAllStudents();
