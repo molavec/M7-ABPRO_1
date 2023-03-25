@@ -13,18 +13,18 @@ if(command == 'nuevo') {
     nombre: process.argv[3],
     rut: process.argv[4],
     curso: process.argv[5],
-    nival: process.argv[6],
+    nivel: process.argv[6],
   };
 
   console.log('Ingresando estudiante', estudiante);
 
-  // addStudent(estudiante);
+  addStudent(estudiante);
 
   return 0;
 }
-if(command == 'select') {
+if(command == 'traer') {
   console.log('llamando a funcion para obtener los usuarios');
-  addStudent(data)
+  getAllStudents();
   return 0;
 }
 if(command == 'getByRut') {
@@ -61,8 +61,7 @@ if(command == 'elimina') {
 }
 
 console.log("no se reconoce ningun comando :(")
-
-  return -1
+return -1;
 
 
 
@@ -88,9 +87,9 @@ pool.connect();
 /**
  * add
  */
-const addStudent = (student) => {
+const addStudent = (estudiante) => {
   //TODO
-  const query = '';
+  const query = `INSERT INTO estudiante (nombre,rut,curso,nivel) value (${estudiante.nombre}, ${estudiante.rut}, ${estudiante.curso}, ${estudiante.nivel})`;
   pool.query(query, (err, res) => {
     if (err) {
       console.log('Error: ', err);
@@ -118,9 +117,9 @@ const getAllStudents = () => {
 /**
  * select by rut 
  */
-const getStudentByRut = () => {
+const getStudentByRut = (rut) => {
   //TODO
-  const query = '';
+  const query = `select * from estudiante where rut = ${rut.rut} `;
   pool.query(query, (err, res) => {
     if (err) {
       console.log('Error: ', err);
