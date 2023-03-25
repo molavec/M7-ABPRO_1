@@ -25,7 +25,7 @@ const addStudent = () => {
     if (err) {
       console.log('Error: ', err);
     }
-    console.log('result: ', res);  
+    console.tables('result: ', res);  
   });
 }
 
@@ -35,12 +35,12 @@ const addStudent = () => {
  */
 const getAllStudents = () => {
   //TODO
-  const query = 'SELECT id,nombre,rut,curso,nivel FROM estudiante;';
+  const query = 'SELECT * FROM estudiante;';
   pool.query(query, (err, res) => {
     if (err) {
       console.log('Error: ', err);
     }
-    console.log('result: ', res);  
+    console.table(res.rows);  
   });
 }
 
