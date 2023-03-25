@@ -78,14 +78,21 @@ const updateStudent = () => {
 /**
  * delete student
  */
-const deleteStudent = () => {
+const deleteStudent = (rut) => {
+  console.log('Ejecucion delete...')
   //TODO
-  const query = '';
+  const query = `DELETE FROM estudiante WHERE rut='${rut}'`;
   pool.query(query, (err, res) => {
     if (err) {
       console.log('Error: ', err);
+      return;
     }
-    console.log('result: ', res);  
+
+    if(res.rowCount > 0) {
+      console.log('Se elimina el usuario');  
+    } else {
+      console.log('No se encontró el usuario a eliminar.');
+    }
   });
 }
 
@@ -98,8 +105,10 @@ var data = {
   nivel: NIVEL.EXPERTO,
 }
 
+var rut = "22222222-2";
+
 // addStudent(data);
-getAllStudents();
+// getAllStudents();
 // getStudentByRut(rut);
 // updateStudent(data);
-// deleteStudent(rut);
+deleteStudent(rut);
