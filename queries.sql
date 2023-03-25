@@ -4,4 +4,5 @@ create table estudiante (
   rut VARCHAR(30) NOT NULL,
   curso VARCHAR(30) NOT NULL,
   nivel VARCHAR(30) NOT NULL
-)
+);
+
