@@ -77,8 +77,8 @@ const NIVEL = {
 
 const pool = new Pool({
   host: 'localhost',
-  user: 'root',
-  password: '123456',
+  user: 'postgres',
+  password: '2023',
   port: 5432,
   database: 'm7-abpro_1',
 });
@@ -88,7 +88,7 @@ pool.connect();
 /**
  * add
  */
-const addStudent = () => {
+const addStudent = (student) => {
   //TODO
   const query = '';
   pool.query(query, (err, res) => {
@@ -177,9 +177,25 @@ var data = {
 
 var rut = "22222222-2";
 
-// addStudent(data);
+var estudiante1 = {
+  nombre: 'Pablito',
+  rut: '20369584-9',
+  curso: 'Artes Visuales',
+  nivel: '10'
+}
+var updateStudent1 = {
+  nombre: 'Pablo Lazcano',
+  rut: '20569874-2',
+  curso: 'Programacion en Cobol',
+  nivel: '1'
+}
+addStudent(estudiante1)
+updateStudent(updateStudent1)
+
+
+
+
 // getAllStudents();
 // getStudentByRut(rut);
-// updateStudent(data);
 // deleteStudent(rut);
 
