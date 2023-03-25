@@ -102,12 +102,20 @@ const updateStudent = (estudianteEditado) => {
       nombre='${estudianteEditado.nombre}',
       nivel='${estudianteEditado.nivel}', 
       curso='${estudianteEditado.curso}' 
-      WHERE rut='${estudianteEditado.rut}'`;
+    WHERE 
+      rut='${estudianteEditado.rut}'
+    `;
   pool.query(query, (err, res) => {
     if (err) {
       console.log('Error: ', err);
       return;
     }
+    if(res.rowCount > 0) {
+      console.log('Se actualiza  el usuario');  
+    } else {
+      console.log('No se encontró el usuario a actualiza r.');
+    }
+    
   });
 }
 
@@ -157,12 +165,12 @@ if(command == 'rut') {
   getStudentByRut(rut)
   return 0;
 }
-if(command == 'actualizar') {
+if(command == 'editar') {
   const estudianteEditado = {
-    nombre: process.argv[8],
-    rut: process.argv[9],
-    curso: process.argv[10],
-    nival: process.argv[11],
+    nombre: process.argv[3],
+    rut: process.argv[4],
+    curso: process.argv[5],
+    nivel: process.argv[6],
   };
 
   console.log('estudiante actualizado', estudianteEditado);
