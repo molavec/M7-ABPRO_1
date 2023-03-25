@@ -90,7 +90,7 @@ const deleteStudent = () => {
 }
 
 
-// ejecuata la funcion
+// ejecuta la funcion
 var data = {
   nombre: 'Juan Perez',
   rut: '11111111-1',
@@ -105,15 +105,16 @@ var estudiante1 = {
   curso: 'Artes Visuales',
   nivel: '10'
 }
+
 var updateStudent1 = {
   nombre: 'Pablo Lazcano',
   rut: '20569874-2',
   curso: 'Programacion en Cobol',
   nivel: '1'
 }
+
 addStudent(estudiante1)
 updateStudent(updateStudent1)
-
 
 
 // addStudent(data);
@@ -121,13 +122,6 @@ updateStudent(updateStudent1)
 // getStudentByRut(rut);
 // updateStudent(data);
 // deleteStudent(rut);
-
-var updateStudent1 = {
-  nombre: 'Pablo Lazcano',
-  rut: '20569874-2',
-  curso: 'Programacion en Cobol',
-  nivel: '1'
-}
 
 
 nombre = nombre,
