@@ -25,7 +25,7 @@ SELECT id,nombre,rut,curso,nivel FROM estudiante;
 
 
 /* Declared insersion */
-PREPARE addEstudiante (text, text, text, text) AS
+PREPARE add_estudiante (text, text, text, text) AS
     INSERT INTO estudiante 
     (
       nombre,
@@ -38,3 +38,6 @@ EXECUTE addEstudiante('Bryan May', '12.345.678-9', 'guitarra', '7');
 
 
 DEALLOCATE addEstudiante;
+
+
+SELECT * FROM pg_class;
