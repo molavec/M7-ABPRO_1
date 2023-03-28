@@ -17,7 +17,7 @@ if(command == 'nuevo') {
   };
   // console.log('Ingresando estudiante', estudiante);
   addStudent(estudiante);
-  return;
+  return 0;
 };
 
 if(command == 'traer') {

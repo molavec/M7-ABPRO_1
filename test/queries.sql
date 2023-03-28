@@ -24,4 +24,17 @@ INSERT INTO estudiante (
 SELECT id,nombre,rut,curso,nivel FROM estudiante;
 
 
+/* Declared insersion */
+PREPARE addEstudiante (text, text, text, text) AS
+    INSERT INTO estudiante 
+    (
+      nombre,
+      rut,
+      curso,
+      nivel
+    ) VALUES($1, $2, $3, $4);
 
+EXECUTE addEstudiante('Bryan May', '12.345.678-9', 'guitarra', '7');
+
+
+DEALLOCATE addEstudiante;
