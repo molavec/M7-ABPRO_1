@@ -11,7 +11,35 @@ https://github.com/molavec/M7-ABPRO_1
 
 ## How to
 
-Se crea una carpeta por tarea
+Se crea una carpeta por cada tarea
+
+### Docker
+
+Puedes cambiar los datos de conexión en el `docker-compose.yml`
+```yaml
+  db:
+    image: postgres
+    restart: always
+    environment:
+      # POSTGRES_USER: postgres
+      # POSTGRES_PASSWORD: example
+      # POSTGRES_DB: m7-abp_1
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: 123456
+      POSTGRES_DB: banco
+    ports:
+      - 5432:5432
+```
+
+Para utilizar adminer hay que poner el nombre del servicio en el host. Para el caso anterior los parámetros de conexión son:
+
+![./docs/adminer.jpg](adminer)
+
+Notar que en vez de utilizar `localhost` se utiliza `db`. Esto se debe a que en el contenedor de adminer no hay nada en el `5432`, ya que postgre se ejecuta en un contenedor independiente. En docker para llamar se identifica el `nombre del equipo` mediante el nombre del servicio.
+
+Más info: https://stackoverflow.com/questions/45637206/docker-is-the-server-running-on-host-localhost-1-and-accepting-tcp-ip-con
+
+
 
 ### m1
 
@@ -70,3 +98,5 @@ node index.js get 1
 ```bash
 node index.js balance 1
 ```
+
+
