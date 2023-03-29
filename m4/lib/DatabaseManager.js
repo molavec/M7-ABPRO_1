@@ -40,7 +40,7 @@ class DatabaseManager {
       if (!DatabaseManager.instance) {
           DatabaseManager.instance = new DatabaseManager();
       }
-      this.connect();
+      DatabaseManager.instance.connect();
       return DatabaseManager.instance;
   }
 
@@ -64,7 +64,7 @@ class DatabaseManager {
     }
 
     return new Promise ((resolve, reject)=>{
-      pool.query(query, (err, res) => {
+      this.pool.query(query, (err, res) => {
         if (err) {
           reject(err);
         }
@@ -88,7 +88,7 @@ class DatabaseManager {
     }
 
     return new Promise ((resolve, reject)=>{
-      pool.query(query, (err, res) => {
+      this.pool.query(query, (err, res) => {
         if (err) {
           reject(err);
         }
@@ -112,7 +112,7 @@ class DatabaseManager {
     }
 
     return new Promise ((resolve, reject)=>{
-      pool.query(query, (err, res) => {
+      this.pool.query(query, (err, res) => {
         if (err) {
           reject(err);
         }
@@ -125,5 +125,5 @@ class DatabaseManager {
 
 }
 
-exports.default = DatabaseManager;
+module.exports = DatabaseManager;
 
