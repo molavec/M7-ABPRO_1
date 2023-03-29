@@ -21,6 +21,16 @@ app.get('/', (req, res) => {
   // res.send('Hello World!');
 });
 
+app.get('/login-form', (req, res) => {
+  res.render('login-form');
+  // res.send('Hello World!');
+});
+
+app.get('/register-form', (req, res) => {
+  res.render('register-form');
+  // res.send('Hello World!');
+});
+
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
 });
