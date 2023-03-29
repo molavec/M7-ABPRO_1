@@ -23,7 +23,7 @@ if(command == 'nuevo') {
 if(command == 'traer') {
   console.log('llamando a funcion para obtener los usuarios');
   getAllStudents();
-  return 0;
+  return 0;ce
 };
 
 if(command == 'rut') {
