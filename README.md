@@ -33,7 +33,7 @@ Puedes cambiar los datos de conexión en el `docker-compose.yml`
 
 Para utilizar adminer hay que poner el nombre del servicio en el host. Para el caso anterior los parámetros de conexión son:
 
-![./docs/adminer.jpg](adminer)
+![adminer](./docs/adminer.jpg)
 
 Notar que en vez de utilizar `localhost` se utiliza `db`. Esto se debe a que en el contenedor de adminer no hay nada en el `5432`, ya que postgre se ejecuta en un contenedor independiente. En docker para llamar se identifica el `nombre del equipo` mediante el nombre del servicio.
 
