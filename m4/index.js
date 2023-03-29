@@ -14,7 +14,7 @@ const add = async () => {
     amount,
     account
   );
-  console.log(result);
+  console.log('result', result);
   process.exit(0);
 };
 

@@ -88,7 +88,7 @@ yarn server
 Utilizar los siguientes comandos en la carperta `m4` para probar
 
 ```bash
-node index.js add 'Depósito enero' '2023/02/01 10:00:00' 10000 1
+node index.js add 'Depósito enero' '2023/01/01' 10000 1
 ```
 
 ```bash

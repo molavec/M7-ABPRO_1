@@ -54,7 +54,7 @@ class DatabaseManager {
         (descripcion, fecha, monto, cuenta) 
       values 
         ($1, $2, $3, $4) 
-      return *;
+      returning *;
     `;
     const query = {
       // give the query a unique name
@@ -68,9 +68,9 @@ class DatabaseManager {
         if (err) {
           reject(err);
         }
-        console.log(res);
+        // console.log('res', res);
+        this.pool.end();
         resolve(res);
-        pool.end();
       });
     });
 
@@ -94,7 +94,7 @@ class DatabaseManager {
         }
         console.log(res);
         resolve(res);
-        pool.end();
+        this.pool.end();
       });
     });
   }
@@ -118,7 +118,7 @@ class DatabaseManager {
         }
         console.log(res);
         resolve(res);
-        pool.end();
+        this.pool.end();
       });
     });
   }
