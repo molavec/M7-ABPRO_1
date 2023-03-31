@@ -1,0 +1,230 @@
+[33mcommit 1fc4aab8399a8bea6ddb3d4649f5ab1bbfc83662[m[33m ([m[1;36mHEAD -> [m[1;32mCgonzalez30-03[m[33m)[m
+Author: andrescarlos2211 <andrescarlos2211@gmail.com>
+Date:   Fri Mar 31 11:46:09 2023 -0300
+
+    Agregada validación en caso que no exista usuario
+
+[33mcommit 60c2afb27420823a8d0259f9ddbeeeecdaa2c97e[m[33m ([m[1;31morigin/Cgonzalez30-03[m[33m)[m
+Author: Iridio <andrescarlos2211@gmail.com>
+Date:   Thu Mar 30 21:52:12 2023 -0300
+
+    get usuarios funcional
+
+[33mcommit 26e579672326b38558a2748d2b33b439b5726a5a[m
+Author: Iridio <andrescarlos2211@gmail.com>
+Date:   Thu Mar 30 21:44:42 2023 -0300
+
+    Array para HBS
+
+[33mcommit 177f00546f164a98628ff35a5d1e552deb500341[m
+Author: Iridio <andrescarlos2211@gmail.com>
+Date:   Thu Mar 30 20:40:51 2023 -0300
+
+    Cambios DB
+
+[33mcommit 7f59122afeeed8e3f03266b0e50e405e60eb758c[m
+Author: Miguel Olave <molavec@gmail.com>
+Date:   Wed Mar 29 18:58:10 2023 -0300
+
+    corrige sql
+
+[33mcommit 6cbaf8dcd861dd49fe1df3f97115fc7a53e25ba5[m
+Author: Miguel Olave <molavec@gmail.com>
+Date:   Wed Mar 29 18:20:11 2023 -0300
+
+    ajuste imagen
+
+[33mcommit 2a13e33cc258ed42baefe0fc7e9e78ce567d2735[m
+Merge: f23dbb8 c20ceba
+Author: Miguel Olave <molavec@gmail.com>
+Date:   Wed Mar 29 18:18:00 2023 -0300
+
+    Merge pull request #2 from molavec/refactoring
+    
+    ajuste readme
+
+[33mcommit c20ceba1561b1dfd32642f94c02d87e0940d838f[m[33m ([m[1;31morigin/refactoring[m[33m)[m
+Author: Miguel Olave <molavec@gmail.com>
+Date:   Wed Mar 29 18:17:15 2023 -0300
+
+    ajuste readme
+
+[33mcommit f23dbb86168c9773b31d64fcabaa28d887077be7[m
+Merge: db66829 f6bcb0a
+Author: Miguel Olave <molavec@gmail.com>
+Date:   Wed Mar 29 18:14:06 2023 -0300
+
+    Merge pull request #1 from molavec/refactoring
+    
+    Refactoring
+
+[33mcommit f6bcb0acd51194030c122494ad991c4b88c6b4bf[m
+Author: Miguel Olave <molavec@gmail.com>
+Date:   Wed Mar 29 18:13:12 2023 -0300
+
+    Ajusta el readme
+
+[33mcommit 70f6f583ed8bea841c892bdfe09cf8970ccaa623[m
+Author: Miguel Olave <molavec@gmail.com>
+Date:   Wed Mar 29 17:55:55 2023 -0300
+
+    Ajuste de las condiciones if y clase
+
+[33mcommit 4086660c785927720098a6cfc0b18e2afa5f388f[m
+Author: Miguel Olave <molavec@gmail.com>
+Date:   Wed Mar 29 17:34:29 2023 -0300
+
+    ajuste README
+
+[33mcommit 5c4476ec30355a24aae9fb5d4a64a04311bc5dbe[m
+Author: Miguel Olave <molavec@gmail.com>
+Date:   Wed Mar 29 17:29:21 2023 -0300
+
+    Arma la esctructura para modulo 4
+
+[33mcommit db6682945045c63d11a2b5cef051f5c3b8472d1e[m
+Author: Miguel Olave <molavec@gmail.com>
+Date:   Wed Mar 29 15:43:36 2023 -0300
+
+    Ajusta readme.md
+
+[33mcommit 9f2823b79fffc4d9f3c68f97903a14fc972dde63[m
+Author: Nico <nico.masot@gmail.com>
+Date:   Tue Mar 28 21:50:05 2023 -0300
+
+    "Cambios en servidor"
+
+[33mcommit 5825ffdf092878b7d04d60cbe851f86c951cfff8[m
+Author: Miguel Olave <molavec@gmail.com>
+Date:   Tue Mar 28 21:26:23 2023 -0300
+
+    genera los formularios
+
+[33mcommit a051d803729b0ceaf29bf7200050e9ca5cbd4cf3[m
+Author: Miguel Olave <molavec@gmail.com>
+Date:   Tue Mar 28 20:52:28 2023 -0300
+
+    servidor express
+
+[33mcommit c1d95831d56860df30b1af9d304cbba0a15d650a[m
+Author: Miguel Olave <molavec@gmail.com>
+Date:   Mon Mar 27 21:19:18 2023 -0300
+
+    update instert with name for prepared
+
+[33mcommit 9e114d95e9d5449d1936a2a79882b54367560875[m
+Author: Miguel Olave <molavec@gmail.com>
+Date:   Mon Mar 27 20:06:34 2023 -0300
+
+    1 y 3 finalizado
+
+[33mcommit 24a2544c00c4d224f01c88c550b5de1cdcb2f2c5[m
+Author: Nico <nico.masot@gmail.com>
+Date:   Sat Mar 25 13:53:33 2023 -0300
+
+    Delete done
+
+[33mcommit 440d9c2fd65dc203680706fd9eadcbeb7f52a0db[m
+Author: Nico <nico.masot@gmail.com>
+Date:   Sat Mar 25 13:51:38 2023 -0300
+
+    Editar finalizado
+
+[33mcommit c48951c11f9dbeb5e87c1c2c65e9f1a1863d379f[m
+Author: Nico <nico.masot@gmail.com>
+Date:   Sat Mar 25 13:46:48 2023 -0300
+
+    obtener datos por rut finalizado
+
+[33mcommit 5f69703608471989519174128759583b25d8e478[m
+Author: Nico <nico.masot@gmail.com>
+Date:   Sat Mar 25 13:41:50 2023 -0300
+
+    agredar funciona
+
+[33mcommit 12b6c496e4244875060a45d585fed2f85a67febc[m
+Author: Miguel Olave <molavec@gmail.com>
+Date:   Sat Mar 25 13:02:36 2023 -0300
+
+    update merged
+
+[33mcommit cb5e27b63176839cdc2c1020640bbfcfa91cdc89[m
+Merge: 4f802b1 50f8c71
+Author: Miguel Olave <molavec@gmail.com>
+Date:   Sat Mar 25 12:51:19 2023 -0300
+
+    app finalizada
+
+[33mcommit 4f802b13b5180b307a769316b6fba7e11c5ea400[m
+Author: Miguel Olave <molavec@gmail.com>
+Date:   Sat Mar 25 12:46:51 2023 -0300
+
+    addstudent
+
+[33mcommit 50f8c71376881a3f51c9ce269df389803b143cfc[m
+Merge: eb9a641 8a9e5e6
+Author: Iridio <andrescarlos2211@gmail.com>
+Date:   Sat Mar 25 12:45:42 2023 -0300
+
+    Merge branch 'main' of https://github.com/molavec/M7-ABPRO_1
+
+[33mcommit eb9a641498e40430805916f4063754d21d2ef6ee[m
+Author: Iridio <andrescarlos2211@gmail.com>
+Date:   Sat Mar 25 12:39:44 2023 -0300
+
+    Update creado
+
+[33mcommit 24f8b46f0049744027faf9382ee7e92f4d639bf9[m
+Merge: 8a9e5e6 cbbc895
+Author: Miguel Olave <molavec@gmail.com>
+Date:   Sat Mar 25 12:20:57 2023 -0300
+
+    Merge branch 'agregar-estudiante' of github.com:molavec/M7-ABPRO_1 into main
+
+[33mcommit 8a9e5e6107ed3f0b20da75d9fe12e84dacb12ff0[m
+Author: Miguel Olave <molavec@gmail.com>
+Date:   Sat Mar 25 12:06:45 2023 -0300
+
+    mensaje error
+
+[33mcommit cbbc8955db086d44b8b19443d68d3cee8c914f16[m
+Author: Nico <nico.masot@gmail.com>
+Date:   Sat Mar 25 12:02:46 2023 -0300
+
+    agregado 1 estudiante
+
+[33mcommit f37afb857b99b4e43d0b3233b6a8ff4aeabc13f8[m
+Author: Miguel Olave <molavec@gmail.com>
+Date:   Sat Mar 25 11:58:13 2023 -0300
+
+    parametros
+
+[33mcommit 4ec0de315e09510794297a7104248d217ee0a496[m
+Author: Miguel Olave <molavec@gmail.com>
+Date:   Fri Mar 24 21:49:37 2023 -0300
+
+    delete user works
+
+[33mcommit db499753216c0db9e9313841add7ef7d7efbbc0c[m
+Author: Miguel Olave <molavec@gmail.com>
+Date:   Fri Mar 24 21:40:33 2023 -0300
+
+    Lista los todos los usuarios
+
+[33mcommit 288eafee5a9bb3240c4db9f67af823640e43d13d[m
+Author: Miguel Olave <molavec@gmail.com>
+Date:   Fri Mar 24 21:37:25 2023 -0300
+
+    obtiene los estudiantes
+
+[33mcommit 54d49128ed6c69f23e59ba099f6cfa6d5e1ee1e6[m
+Author: Miguel Olave <molavec@gmail.com>
+Date:   Fri Mar 24 20:51:47 2023 -0300
+
+    esqueleto de la app
+
+[33mcommit 059302f2946a43dc7f3ec0f9c33eb1a96fe69b53[m
+Author: Miguel Olave <molavec@gmail.com>
+Date:   Fri Mar 24 20:02:24 2023 -0300
+
+    first commit

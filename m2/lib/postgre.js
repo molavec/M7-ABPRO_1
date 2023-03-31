@@ -66,7 +66,6 @@ const addStudent = (estudiante) => {
   });
 }
 
-
 /**
  * select all student
  */
