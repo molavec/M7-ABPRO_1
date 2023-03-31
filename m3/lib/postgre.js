@@ -151,7 +151,7 @@ const deleteStudent = (rut) => {
 }
 
 const getAllUsers = () => {
-  //TODO
+//Mostrar todos los usuarios
   const promise = new Promise((resolve, reject) => {
     const query = 'SELECT * FROM usuarios;';
     pool.query(query, (err, res) => {
@@ -160,14 +160,11 @@ const getAllUsers = () => {
         reject(err);
       }
       let arreglo = Object.values(res.rows)
-      // console.table(res.rows);
-      // console.log(arreglo)
       resolve(arreglo);
     });
   })
-
   return promise;
-}
+};
 
 
 
