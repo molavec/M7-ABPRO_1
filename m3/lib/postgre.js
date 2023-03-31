@@ -153,11 +153,11 @@ const deleteStudent = (rut) => {
 
 const loginUser = (email, password) => {
 return promise ((resolve, reject) => {
-  const query = `SELECT COUNT (*) FROM usuarios WHERE email = '${email}' AND password = '${password}';`;
+  const queryText = `SELECT COUNT (*) FROM usuarios WHERE email = '$1' AND password = '$2';`
 }
 
 
-}
+)}
 
 
 
