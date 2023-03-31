@@ -9,6 +9,7 @@ const {
   getAllUsers
 } = require('./lib/postgre');
 
+
 const { Pool, Client } = require('pg');
 
 const pool = new Pool({
@@ -27,16 +28,18 @@ pool.connect();
 const database = () => {
 
   const query = `CREATE TABLE IF NOT EXISTS "usuarios" ("email" varchar(25), "password" varchar(25));`;
-
-  pool.query(query, (err, res) => {
+  
+    pool.query(query, (err, res) => {
     if (err) {
       console.log('Error: ', err);
     }
-    let arreglo = Object.values(res.rows)
+    let arreglo = Object.values (res.rows)
+    pool.end();
   });
 }
 
 database();
+
 
 const app = express();
 const port = 3000;
@@ -51,22 +54,31 @@ app.get('/', (req, res) => {
   // res.send('Hello World!');
 });
 
-app.get('/login-form', (req, res) => {
+
+
+app.get('/login', (req, res) => {
   res.render('login-form');
   // res.send('Hello World!');
 });
 
-app.get('/register-form', (req, res) => {
+
+//Ruta que registra nuevos usuarios
+app.get('/usuario', (req, res) => {
   res.render('register-form');
   // res.send('Hello World!');
 });
 
-app.get('/usuarios', async (req, res) => {
-
-const users = await getAllUsers();
-
-res.render('users', {users})
-})
+//Ruta que muestra todos los usuarios existentessss
+app.get('/usuarios', (req, res) => {
+    getAllUsers()
+    .then(users => {
+      res.render('users', { users });
+    })
+    .catch(error => {
+      console.log('Error:', error);
+      res.send('Error al obtener los usuarios');
+    });
+});
 
 app.listen(port, () => {
   console.log(`Servicio corriendo en el puerto ${port}`);

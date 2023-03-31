@@ -150,6 +150,13 @@ const deleteStudent = (rut) => {
   });
 }
 
+
+
+
+// funciones softlife
+
+
+
 const getAllUsers = () => {
 //Mostrar todos los usuarios
   const promise = new Promise((resolve, reject) => {
@@ -165,11 +172,6 @@ const getAllUsers = () => {
   })
   return promise;
 };
-
-
-
-
-
 
   module.exports = {
     addStudent,
