@@ -154,11 +154,32 @@ const deleteStudent = (rut) => {
 
 
 // funciones softlife
-
+const registerUser = (email, password) => {
+return new Promise((resolve, reject) => {
+  const query = `INSERT INTO usuarios ( email,  password )
+  VALUES (  $1,   $2);`;
+  const data = [
+    email, password
+  ];
+  pool.query(query, data, (err, res) => {
+    if (err) {
+      console.log('Error: ', err);
+      reject (err);
+    }
+    else if (res.rowCount > 0) {
+      console.log('Usuario agregado con éxito!');
+      resolve(res.rowCount[0]);
+    } else {
+      console.log('No fue posible agregar estudiante!');
+      resolve(null);
+    }
+  });
+});
+}
 
 
 const getAllUsers = () => {
-//Mostrar todos los usuarios
+  //Mostrar todos los usuarios
   const promise = new Promise((resolve, reject) => {
     const query = 'SELECT * FROM usuarios;';
     pool.query(query, (err, res) => {
@@ -173,11 +194,12 @@ const getAllUsers = () => {
   return promise;
 };
 
-  module.exports = {
-    addStudent,
-    getAllStudents,
-    getStudentByRut,
-    updateStudent,
-    deleteStudent,
-    getAllUsers
-  };
+module.exports = {
+  addStudent,
+  getAllStudents,
+  getStudentByRut,
+  updateStudent,
+  deleteStudent,
+  getAllUsers,
+  registerUser
+};
