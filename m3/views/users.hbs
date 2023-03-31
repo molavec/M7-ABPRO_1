@@ -13,21 +13,18 @@
     Soft Life Chile Spa
   </h1>
   <div>
-
+{{#each users}}
 <div class="card" style="width: 18rem;">
   <img src="..." class="card-img-top" alt="">
   <div class="card-body">
     <h5 class="card-title">Correo Usuario</h5>
-    <p class="card-text"></p>
-    <a href="#" class="btn btn-primary"></a>
+    <p class="card-text">{{this.email}}</p>
+    <br><br>
+    <a href="#" class="btn btn-primary">Eliminar Usuario</a>
   </div>
 </div>
-
+{{/each}}
 <div>
-
-
-//aqui van los usuarios//
-
 
 </div>
 </body>

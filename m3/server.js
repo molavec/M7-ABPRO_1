@@ -66,8 +66,6 @@ app.get('/usuarios', async (req, res) => {
 const users = await getAllUsers();
 
 res.render('users', {users})
-
-console.log(users);
 })
 
 app.listen(port, () => {
