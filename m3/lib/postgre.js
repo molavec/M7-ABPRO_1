@@ -55,7 +55,7 @@ const addStudent = (estudiante) => {
       console.log('Error: ', err);
       return -1;
     }
-    if(res.rowCount > 0) {
+    if (res.rowCount > 0) {
       console.log('Usuario agregado con éxito!');
     } else {
       console.log('No fue posible agregar estudiante!');
@@ -75,7 +75,7 @@ const getAllStudents = () => {
     if (err) {
       console.log('Error: ', err);
     }
-    let arreglo = Object.values (res.rows)
+    let arreglo = Object.values(res.rows)
     // console.table(res.rows);
     console.log(arreglo)
     pool.end();
@@ -118,8 +118,8 @@ const updateStudent = (estudianteEditado) => {
       console.log('Error: ', err);
       return;
     }
-    if(res.rowCount > 0) {
-      console.log('Se actualiza  el usuario');  
+    if (res.rowCount > 0) {
+      console.log('Se actualiza  el usuario');
     } else {
       console.log('No se encontró el usuario a actualiza r.');
     }
@@ -141,8 +141,8 @@ const deleteStudent = (rut) => {
       return;
     }
 
-    if(res.rowCount > 0) {
-      console.log('Se elimina el usuario');  
+    if (res.rowCount > 0) {
+      console.log('Se elimina el usuario');
     } else {
       console.log('No se encontró el usuario a eliminar.');
     }
@@ -150,10 +150,35 @@ const deleteStudent = (rut) => {
   });
 }
 
-module.exports = { 
-  addStudent,
-  getAllStudents,
-  getStudentByRut,
-  updateStudent,
-  deleteStudent
-};
+const getAllUsers = () => {
+  //TODO
+  const promise = new Promise((resolve, reject) => {
+    const query = 'SELECT * FROM usuarios;';
+    pool.query(query, (err, res) => {
+      if (err) {
+        console.log('Error: ', err);
+        reject(err);
+      }
+      let arreglo = Object.values(res.rows)
+      // console.table(res.rows);
+      // console.log(arreglo)
+      resolve(arreglo);
+    });
+  })
+
+  return promise;
+}
+
+
+
+
+
+
+  module.exports = {
+    addStudent,
+    getAllStudents,
+    getStudentByRut,
+    updateStudent,
+    deleteStudent,
+    getAllUsers
+  };
