@@ -15,8 +15,6 @@ const pool = new Pool({
 
 pool.connect();
 
-export 
-
 /**
  * add
  */
