@@ -1,15 +1,23 @@
 const express = require('express');
 const hbs = require('hbs');
+const { Pool, Client } = require('pg');
+const bodyParser = require('body-parser')
+const app = express();
+const port = 3000;
 const {
   addStudent,
   getAllStudents,
   getStudentByRut,
   updateStudent,
-  deleteStudent
+  deleteStudent,
+  getAllUsers,
+  registerUser
 } = require('./lib/postgre');
 
 
-const { Pool, Client } = require('pg');
+
+app.use(bodyParser.urlencoded({ extended: true }));
+
 
 const pool = new Pool({
   host: 'localhost',
@@ -39,10 +47,6 @@ const database = () => {
 
 database();
 
-
-const app = express();
-const port = 3000;
-
 app.use(express.static('public'));
 
 app.set('view engine', 'hbs');
@@ -53,29 +57,47 @@ app.get('/', (req, res) => {
   // res.send('Hello World!');
 });
 
-app.get('/login-form', (req, res) => {
+
+
+app.get('/login', (req, res) => {
   res.render('login-form');
   // res.send('Hello World!');
 });
 
-app.get('/register-form', (req, res) => {
-  res.render('register-form');
-  // res.send('Hello World!');
+
+
+
+//Ruta que muestra formulario para registrar nuevos usuarios
+ app.get('/usuario', (req, res) => {
+   res.render('register-form');
+ });
+app.post('/register', (req, res) => {
+  const email = req.body.email;
+  const password = req.body.password;
+  //Registra usando la funcion registerUser
+  registerUser(email, password);
+  //Redirige a la pagina de confimacion
+  res.redirect('/confirmation');
+});
+app.get('/confirmation', (req,res)=>{
+  res.send('¡Gracias por registrarte!');
 });
 
+
+
+
+
+//Ruta que muestra todos los usuarios existentessss
 app.get('/usuarios', (req, res) => {
-  const query = 'SELECT * FROM usuarios;';
-  pool.query(query, (err, res) => {
-    if (err) {
-      console.log('Error: ', err);
-    }
-    // res.render('home')
-    res.send('res')
-    console.log(res)
-  })
+    getAllUsers()
+    .then(users => {
+      res.render('users', { users });
+    })
+    .catch(error => {
+      console.log('Error:', error);
+      res.send('Error al obtener los usuarios');
+    });
 });
-
-
 
 app.listen(port, () => {
   console.log(`Servicio corriendo en el puerto ${port}`);
