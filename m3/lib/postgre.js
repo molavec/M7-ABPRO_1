@@ -7,7 +7,7 @@ const pool = new Pool({
   user: 'root',
   password: '123456',
   port: 5432,
-  database: 'softlife',
+  database: 'm7-abpro_1',
   idleTimeoutMillis: 5000,
   max: 20,
   connectionTimeoutMillis: 2000
