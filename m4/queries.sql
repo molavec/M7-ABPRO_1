@@ -13,3 +13,7 @@ create table cuentas (
 );
 
 Insert into cuentas values (1, 20000);
+
+
+select * from cuentas;
+select * from transacciones;
