@@ -1,0 +1,26 @@
+[
+  {
+    "nombre": "Juan",
+    "rut": "12.345.678-9",
+    "curso": "Matemáticas",
+    "nivel": "Avanzado"
+  },
+  {
+    "nombre": "María",
+    "rut": "23.456.789-0",
+    "curso": "Historia",
+    "nivel": "Intermedio"
+  },
+  {
+    "nombre": "Pedro",
+    "rut": "34.567.890-1",
+    "curso": "Inglés",
+    "nivel": "Básico"
+  },
+  {
+    "nombre": "Ana",
+    "rut": "45.678.901-2",
+    "curso": "Programación",
+    "nivel": "Avanzado"
+  }
+]

@@ -5,13 +5,10 @@ const bodyParser = require('body-parser')
 const app = express();
 const port = 3000;
 const {
-  addStudent,
-  getAllStudents,
-  getStudentByRut,
-  updateStudent,
-  deleteStudent,
+  loginUser,
+  registerUser,
   getAllUsers,
-  registerUser
+  deleteUser,
 } = require('./lib/postgre');
 
 
@@ -54,23 +51,25 @@ app.set('views', './views');
 
 app.get('/', (req, res) => {
   res.render('home');
-  // res.send('Hello World!');
 });
 
-
-
-app.get('/login', (req, res) => {
+app.get('/login-form', (req, res) => {
   res.render('login-form');
-  // res.send('Hello World!');
 });
 
-
+app.post('/login', async (req, res) => {
+  const email = req.body.email;
+  const password = req.body.password;
+  const result = await loginUser(email, password);
+  res.send(result);
+});
 
 
 //Ruta que muestra formulario para registrar nuevos usuarios
- app.get('/usuario', (req, res) => {
-   res.render('register-form');
- });
+app.get('/usuario', (req, res) => {
+  res.render('register-form');
+});
+
 app.post('/register', (req, res) => {
   const email = req.body.email;
   const password = req.body.password;
@@ -79,13 +78,10 @@ app.post('/register', (req, res) => {
   //Redirige a la pagina de confimacion
   res.redirect('/confirmation');
 });
+
 app.get('/confirmation', (req,res)=>{
   res.send('¡Gracias por registrarte!');
 });
-
-
-
-
 
 //Ruta que muestra todos los usuarios existentessss
 app.get('/usuarios', (req, res) => {
@@ -98,6 +94,19 @@ app.get('/usuarios', (req, res) => {
       res.send('Error al obtener los usuarios');
     });
 });
+
+
+app.get('/delete/:email', async (req, res) => {
+  // console.log(req.params.email);
+
+  const email = req.params.email;
+
+  const result = await deleteUser(email);
+
+
+  res.send(result);
+});
+
 
 app.listen(port, () => {
   console.log(`Servicio corriendo en el puerto ${port}`);

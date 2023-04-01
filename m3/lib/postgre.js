@@ -15,152 +15,40 @@ const pool = new Pool({
 
 pool.connect();
 
-/**
- * add
- */
-// const addStudent = (estudiante) => {
-//   const queryText = `
-//     INSERT INTO 
-//     estudiante 
-//       (
-//         nombre,
-//         rut,
-//         curso,
-//         nivel
-//       ) 
-//     values
-//       (
-//         $1,
-//         $2,
-//         $3,
-//         $4
-//       );
-//       `;
-
-//   const data = [
-//     estudiante.nombre,
-//     estudiante.rut,
-//     estudiante.curso,
-//     estudiante.nivel
-//   ];
-
-//   const query = {
-//     name: 'add-estudiante',
-//     text: queryText,
-//     values: data
-//   };
-
-//   pool.query(query, (err, res) => {
-//     if (err) {
-//       console.log('Error: ', err);
-//       return -1;
-//     }
-//     if (res.rowCount > 0) {
-//       console.log('Usuario agregado con éxito!');
-//     } else {
-//       console.log('No fue posible agregar estudiante!');
-//     }
-//     pool.end();
-//   });
-// }
-
-
-// /**
-//  * select all student
-//  */
-// const getAllStudents = () => {
-//   //TODO
-//   const query = 'SELECT * FROM estudiante;';
-//   pool.query(query, (err, res) => {
-//     if (err) {
-//       console.log('Error: ', err);
-//     }
-//     let arreglo = Object.values(res.rows)
-//     // console.table(res.rows);
-//     console.log(arreglo)
-//     pool.end();
-//   });
-// }
-
-
-// /**
-//  * select by rut 
-//  */
-// const getStudentByRut = (rut) => {
-//   //TODO
-//   const query = `select * from estudiante where rut = '${rut}' `;
-//   pool.query(query, (err, res) => {
-//     if (err) {
-//       console.log('Error: ', err);
-//     }
-//     console.table(res.rows);
-//     pool.end();
-//   });
-// }
-
-
-// /**
-//  * update Student
-//  */
-// const updateStudent = (estudianteEditado) => {
-
-//   const query = `
-//     UPDATE estudiante 
-//     SET 
-//       nombre='${estudianteEditado.nombre}',
-//       nivel='${estudianteEditado.nivel}', 
-//       curso='${estudianteEditado.curso}' 
-//     WHERE 
-//       rut='${estudianteEditado.rut}'
-//     `;
-//   pool.query(query, (err, res) => {
-//     if (err) {
-//       console.log('Error: ', err);
-//       return;
-//     }
-//     if (res.rowCount > 0) {
-//       console.log('Se actualiza  el usuario');
-//     } else {
-//       console.log('No se encontró el usuario a actualiza r.');
-//     }
-//     pool.end();
-//   });
-// }
-
-
-/**
- * delete student
- */
-const deleteStudent = (rut) => {
-  console.log('Ejecucion delete...')
-  //TODO
-  const query = `DELETE FROM estudiante WHERE rut='${rut}'`;
-  pool.query(query, (err, res) => {
-    if (err) {
-      console.log('Error: ', err);
-      return;
-    }
-
-    if (res.rowCount > 0) {
-      console.log('Se elimina el usuario');
-    } else {
-      console.log('No se encontró el usuario a eliminar.');
-    }
-    pool.end();
-  });
-}
-
 
 const loginUser = (email, password) => {
-return promise ((resolve, reject) => {
-  const query = `SELECT COUNT (*) FROM usuarios WHERE email = '${email}' AND password = '${password}';`;
+  return new Promise ((resolve, reject) => {
+    
+    const queryText = `
+      SELECT 
+        * 
+      FROM 
+        usuarios 
+      WHERE 
+        email = $1 AND password = $2;`
+ 
+    const query = {
+      name: 'select-mail-password',
+      text: queryText,
+      values: [email, password]
+    }
+
+    pool.query(query, (err, result) => {
+      if (err) reject(err);
+      pool.release;
+
+      console.log(result.rowCount)
+
+      const response = (result.rowCount > 0)
+        ? "<p>Usuario logeado exitosamente!</p>" 
+        : "<p>Credenciales invalidas</p>" ;
+      
+      resolve (response +  "<p><a href='/'>Volver</a></p>");
+
+    })
+
+  })
 }
-
-
-}
-
-
-
 
 // funciones softlife
 const registerUser = (email, password) => {
@@ -202,7 +90,45 @@ const getAllUsers = () => {
   return promise;
 };
 
+/**
+ * delete student
+ */
+const deleteUser = (email) => {
+  return new Promise ((resolve, reject) => {
+    
+    const queryText = `
+      DELETE 
+      FROM 
+        usuarios 
+      WHERE 
+        email = $1;`
+ 
+    const query = {
+      name: 'delete-user-by-email',
+      text: queryText,
+      values: [email]
+    }
+
+    pool.query(query, (err, result) => {
+      if (err) reject(err);
+      pool.release;
+
+      console.log(result)
+
+      const response = (result.rowCount > 0)
+        ? "<p>Usuario eliminado!</p>" 
+        : "<p>No se pudo encontrar el usuario</p>" ;
+      
+      resolve (response +  "<p><a href='/'>Volver</a></p>");
+
+    })
+
+  })
+}
+
 module.exports = {
+  loginUser,
+  registerUser,
   getAllUsers,
-  registerUser
+  deleteUser
 };
