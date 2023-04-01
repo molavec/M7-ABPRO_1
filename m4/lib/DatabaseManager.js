@@ -56,30 +56,32 @@ class DatabaseManager {
   }
 
   addTransaction(description, date, amount, account){
-    const queryText = `
-      insert into transacciones 
-        (descripcion, fecha, monto, cuenta) 
-      values 
-        ($1, $2, $3, $4) 
-      returning *;
-    `;
-
-    const query = {
-      // give the query a unique name
-      name: 'add-transaccion',
-      text: queryText,
-      values: [description, date, amount, account],
-    }
-
-    // console.log(this.client);
 
     return new Promise ((resolve, reject)=>{
+      const queryText = `
+        insert into transacciones 
+          (descripcion, fecha, monto, cuenta) 
+        values 
+          ($1, $2, $3, $4) 
+        returning *;
+      `;
+
+      const query = {
+        // give the query a unique name
+        name: 'add-transaccion',
+        text: queryText,
+        values: [description, date, amount, account],
+      }
       this.client.query(query, (err, res) => {
         if (err) reject(err);
 
         // console.log('res', res);
         this.client.release();
-        resolve(res.rows[0]);
+        if(res){
+          resolve(res.rows[0]);
+        } else {
+          reject('Error')
+        }
       });
     });
 
