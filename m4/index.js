@@ -20,8 +20,8 @@ const add = async () => {
 
 const get = async () => {
   const accountId = process.argv[3];
-  const result = await dbm.addTransaction(accountId);
-  console.log(result);
+  const result = await dbm.getTransactions(accountId);
+  console.table(result);
   process.exit(0);
 };
 
