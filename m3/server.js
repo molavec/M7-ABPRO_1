@@ -5,13 +5,9 @@ const bodyParser = require('body-parser')
 const app = express();
 const port = 3000;
 const {
-  addStudent,
-  getAllStudents,
-  getStudentByRut,
-  updateStudent,
-  deleteStudent,
+  loginUser,
+  registerUser,
   getAllUsers,
-  registerUser
 } = require('./lib/postgre');
 
 
@@ -54,15 +50,22 @@ app.set('views', './views');
 
 app.get('/', (req, res) => {
   res.render('home');
-  // res.send('Hello World!');
 });
 
 
 
-app.get('/login', (req, res) => {
+app.get('/login-form', (req, res) => {
   res.render('login-form');
-
 });
+
+app.post('/login', async (req, res) => {
+  const email = req.body.email;
+  const password = req.body.password;
+  const result = await loginUser(email, password);
+  res.send(result);
+});
+
+
 
 
 

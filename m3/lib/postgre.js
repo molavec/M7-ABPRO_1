@@ -23,11 +23,11 @@ const loginUser = (email, password) => {
     
     const queryText = `
       SELECT 
-        COUNT (*) 
+        * 
       FROM 
         usuarios 
       WHERE 
-        email = '$1' AND password = '$2';`
+        email = $1 AND password = $2;`
  
     const query = {
       name: 'select-mail-password',
@@ -37,7 +37,7 @@ const loginUser = (email, password) => {
 
     pool.query(query, (err, result) => {
       if (err) reject(err);
-      pool.end();
+      pool.release;
       resolve (result)
     })
 
