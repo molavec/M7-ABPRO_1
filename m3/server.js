@@ -8,6 +8,7 @@ const {
   loginUser,
   registerUser,
   getAllUsers,
+  deleteUser,
 } = require('./lib/postgre');
 
 
@@ -52,8 +53,6 @@ app.get('/', (req, res) => {
   res.render('home');
 });
 
-
-
 app.get('/login-form', (req, res) => {
   res.render('login-form');
 });
@@ -66,14 +65,11 @@ app.post('/login', async (req, res) => {
 });
 
 
-
-
-
-
 //Ruta que muestra formulario para registrar nuevos usuarios
- app.get('/usuario', (req, res) => {
-   res.render('register-form');
- });
+app.get('/usuario', (req, res) => {
+  res.render('register-form');
+});
+
 app.post('/register', (req, res) => {
   const email = req.body.email;
   const password = req.body.password;
@@ -82,13 +78,10 @@ app.post('/register', (req, res) => {
   //Redirige a la pagina de confimacion
   res.redirect('/confirmation');
 });
+
 app.get('/confirmation', (req,res)=>{
   res.send('¡Gracias por registrarte!');
 });
-
-
-
-
 
 //Ruta que muestra todos los usuarios existentessss
 app.get('/usuarios', (req, res) => {
@@ -101,6 +94,19 @@ app.get('/usuarios', (req, res) => {
       res.send('Error al obtener los usuarios');
     });
 });
+
+
+app.get('/delete/:email', async (req, res) => {
+  // console.log(req.params.email);
+
+  const email = req.params.email;
+
+  const result = await deleteUser(email);
+
+
+  res.send(result);
+});
+
 
 app.listen(port, () => {
   console.log(`Servicio corriendo en el puerto ${port}`);

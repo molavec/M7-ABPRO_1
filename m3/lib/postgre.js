@@ -16,8 +16,6 @@ const pool = new Pool({
 pool.connect();
 
 
-
-
 const loginUser = (email, password) => {
   return new Promise ((resolve, reject) => {
     
@@ -38,7 +36,7 @@ const loginUser = (email, password) => {
     pool.query(query, (err, result) => {
       if (err) reject(err);
       pool.release;
-      
+
       console.log(result.rowCount)
 
       const response = (result.rowCount > 0)
@@ -95,23 +93,37 @@ const getAllUsers = () => {
 /**
  * delete student
  */
-const deleteUser = (rut) => {
-  console.log('Ejecucion delete...')
-  //TODO
-  const query = `DELETE FROM estudiante WHERE rut='${rut}'`;
-  pool.query(query, (err, res) => {
-    if (err) {
-      console.log('Error: ', err);
-      return;
+const deleteUser = (email) => {
+  return new Promise ((resolve, reject) => {
+    
+    const queryText = `
+      DELETE 
+      FROM 
+        usuarios 
+      WHERE 
+        email = $1;`
+ 
+    const query = {
+      name: 'delete-user-by-email',
+      text: queryText,
+      values: [email]
     }
 
-    if (res.rowCount > 0) {
-      console.log('Se elimina el usuario');
-    } else {
-      console.log('No se encontró el usuario a eliminar.');
-    }
-    pool.end();
-  });
+    pool.query(query, (err, result) => {
+      if (err) reject(err);
+      pool.release;
+
+      console.log(result)
+
+      const response = (result.rowCount > 0)
+        ? "<p>Usuario eliminado!</p>" 
+        : "<p>No se pudo encontrar el usuario</p>" ;
+      
+      resolve (response +  "<p><a href='/'>Volver</a></p>");
+
+    })
+
+  })
 }
 
 module.exports = {
