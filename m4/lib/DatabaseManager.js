@@ -56,6 +56,12 @@ class DatabaseManager {
         ($1, $2, $3, $4) 
       returning *;
     `;
+
+    console.log('description', description);
+    console.log('date', date);
+    console.log('amount', amount);
+    console.log('account', account);
+    
     const query = {
       // give the query a unique name
       name: 'add-transaccion',
