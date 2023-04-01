@@ -96,20 +96,23 @@ class DatabaseManager {
     `;
     const values = [accountId]
 
-    const cursor = this.client.query(new Cursor(queryText, values));
+    if(!this.cursor) {
+      this.cursor = this.client.query(new Cursor(queryText, values));
+    }
 
     return new Promise ((resolve, reject)=>{
-      cursor.read(10, (err, rows) => {
+      this.cursor.read(10, (err, rows) => {
         if (err) reject(err);
-        // console.log(res);
-        cursor.close( ()=> {
-          this.client.release();
-        });
         resolve(rows);
       });
     });
   }
 
+  closeCursor() {
+    this.cursor.close( ()=> {
+      this.client.release();
+    });
+  }
   getBalance(accountId){
     const queryText = `
       select saldo from cuentas where id=$1;

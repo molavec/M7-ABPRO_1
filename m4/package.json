@@ -11,7 +11,8 @@
     "balance": "node index.js balance 1"
   },
   "dependencies": {
-    "pg": "^8.10.0"
+    "pg": "^8.10.0",
+    "readline-sync": "^1.4.10"
   },
   "devDependencies": {
     "nodemon": "^2.0.22"
