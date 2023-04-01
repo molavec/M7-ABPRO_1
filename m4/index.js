@@ -1,8 +1,8 @@
 const DatabaseManager = require('./lib/DatabaseManager');
-const dbm = DatabaseManager.getInstance();
-
 
 const add = async () => {
+  const dbm = await DatabaseManager.getInstance();
+
   const description = process.argv[3];
   const date = process.argv[4];
   const amount = process.argv[5];
@@ -19,6 +19,7 @@ const add = async () => {
 };
 
 const get = async () => {
+  const dbm = await DatabaseManager.getInstance();
   const accountId = process.argv[3];
   const result = await dbm.getTransactions(accountId);
   console.table(result);
@@ -26,6 +27,7 @@ const get = async () => {
 };
 
 const balance = async () => {
+  const dbm = await DatabaseManager.getInstance();
   const accountId = process.argv[3];
   const result = await dbm.getBalance(accountId);
   console.log(result.rows[0]);

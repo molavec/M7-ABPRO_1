@@ -1,6 +1,8 @@
 -- SQLBook: Code
 CREATE DATABASE banco;
 
+DROP TABLE transacciones;
+
 CREATE TABLE transacciones (
   descripcion varchar(50),
   fecha varchar(10),

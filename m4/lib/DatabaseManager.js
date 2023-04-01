@@ -1,4 +1,5 @@
 const { Pool, Client } = require('pg');
+const Cursor = require('pg-cursor');
 
 const HOST = 'localhost';
 const USER = 'root';
@@ -28,6 +29,7 @@ class DatabaseManager {
       max: 20,
       connectionTimeoutMillis: 2000
     });
+    // this.client = this.pool.connect();
   }
 
   /**
@@ -36,12 +38,17 @@ class DatabaseManager {
    * This implementation let you subclass the Singleton class while keeping
    * just one instance of each subclass around.
    */
-  static getInstance() {
+  static async getInstance() {
       if (!DatabaseManager.instance) {
-          DatabaseManager.instance = new DatabaseManager();
+        DatabaseManager.instance = new DatabaseManager();
+        const client = await DatabaseManager.instance.pool.connect();
+        DatabaseManager.instance.setClient(client);
       }
-      DatabaseManager.instance.connect();
       return DatabaseManager.instance;
+  }
+
+  setClient(client) {
+    this.client = client
   }
 
   connect() {
@@ -64,13 +71,14 @@ class DatabaseManager {
       values: [description, date, amount, account],
     }
 
+    console.log(this.client);
+
     return new Promise ((resolve, reject)=>{
-      this.pool.query(query, (err, res) => {
-        if (err) {
-          reject(err);
-        }
+      this.client.query(query, (err, res) => {
+        if (err) reject(err);
+
         // console.log('res', res);
-        this.pool.end();
+        this.client.release();
         resolve(res.rows[0]);
       });
     });
@@ -79,20 +87,20 @@ class DatabaseManager {
 
   getTransactions(accountId){
     const queryText = `
-      select * from transacciones where cuenta=$1;
+      select
+        * 
+      from 
+        transacciones 
+      where 
+        cuenta=$1;
     `;
-    const query = {
-      // give the query a unique name
-      name: 'get-transaccions',
-      text: queryText,
-      values: [accountId],
-    }
+    const values = [accountId]
+
+    const cursor = this.pool.query(new Cursor(queryText, values));
 
     return new Promise ((resolve, reject)=>{
-      this.pool.query(query, (err, res) => {
-        if (err) {
-          reject(err);
-        }
+      cursor.read(10, (err, res) => {
+        if (err) reject(err);
         // console.log(res);
         this.pool.end();
         resolve(res.rows);
