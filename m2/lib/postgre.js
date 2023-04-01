@@ -1,5 +1,3 @@
-
-
 const { Pool, Client } = require('pg');
 
 const pool = new Pool({
@@ -7,7 +5,7 @@ const pool = new Pool({
   user: 'root',
   password: '123456',
   port: 5432,
-  database: 'm7-abpro_1',
+  database: 'm7-abpro_2',
   idleTimeoutMillis: 5000,
   max: 20,
   connectionTimeoutMillis: 2000
@@ -15,12 +13,11 @@ const pool = new Pool({
 
 pool.connect();
 
-export 
 
 /**
  * add
  */
-const addStudent = (estudiante) => {
+const addStudents = (estudiantes) => {
   const queryText = `
     INSERT INTO 
     estudiante 
@@ -66,95 +63,6 @@ const addStudent = (estudiante) => {
   });
 }
 
-/**
- * select all student
- */
-const getAllStudents = () => {
-  //TODO
-  const query = 'SELECT * FROM estudiante;';
-  pool.query(query, (err, res) => {
-    if (err) {
-      console.log('Error: ', err);
-    }
-    let arreglo = Object.values (res.rows)
-    // console.table(res.rows);
-    console.log(arreglo)
-    pool.end();
-  });
-}
-
-
-/**
- * select by rut 
- */
-const getStudentByRut = (rut) => {
-  //TODO
-  const query = `select * from estudiante where rut = '${rut}' `;
-  pool.query(query, (err, res) => {
-    if (err) {
-      console.log('Error: ', err);
-    }
-    console.table(res.rows);
-    pool.end();
-  });
-}
-
-
-/**
- * update Student
- */
-const updateStudent = (estudianteEditado) => {
-
-  const query = `
-    UPDATE estudiante 
-    SET 
-      nombre='${estudianteEditado.nombre}',
-      nivel='${estudianteEditado.nivel}', 
-      curso='${estudianteEditado.curso}' 
-    WHERE 
-      rut='${estudianteEditado.rut}'
-    `;
-  pool.query(query, (err, res) => {
-    if (err) {
-      console.log('Error: ', err);
-      return;
-    }
-    if(res.rowCount > 0) {
-      console.log('Se actualiza  el usuario');  
-    } else {
-      console.log('No se encontró el usuario a actualiza r.');
-    }
-    pool.end();
-  });
-}
-
-
-/**
- * delete student
- */
-const deleteStudent = (rut) => {
-  console.log('Ejecucion delete...')
-  //TODO
-  const query = `DELETE FROM estudiante WHERE rut='${rut}'`;
-  pool.query(query, (err, res) => {
-    if (err) {
-      console.log('Error: ', err);
-      return;
-    }
-
-    if(res.rowCount > 0) {
-      console.log('Se elimina el usuario');  
-    } else {
-      console.log('No se encontró el usuario a eliminar.');
-    }
-    pool.end();
-  });
-}
-
 module.exports = { 
-  addStudent,
-  getAllStudents,
-  getStudentByRut,
-  updateStudent,
-  deleteStudent
+  addStudents,
 };
