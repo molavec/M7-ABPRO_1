@@ -29,7 +29,7 @@ class DatabaseManager {
       max: 20,
       connectionTimeoutMillis: 2000
     });
-    // this.client = this.pool.connect();
+    
   }
 
   /**
@@ -71,7 +71,7 @@ class DatabaseManager {
       values: [description, date, amount, account],
     }
 
-    console.log(this.client);
+    // console.log(this.client);
 
     return new Promise ((resolve, reject)=>{
       this.client.query(query, (err, res) => {
@@ -96,14 +96,16 @@ class DatabaseManager {
     `;
     const values = [accountId]
 
-    const cursor = this.pool.query(new Cursor(queryText, values));
+    const cursor = this.client.query(new Cursor(queryText, values));
 
     return new Promise ((resolve, reject)=>{
-      cursor.read(10, (err, res) => {
+      cursor.read(10, (err, rows) => {
         if (err) reject(err);
         // console.log(res);
-        this.pool.end();
-        resolve(res.rows);
+        cursor.close( ()=> {
+          this.client.release();
+        });
+        resolve(rows);
       });
     });
   }
