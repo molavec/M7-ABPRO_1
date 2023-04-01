@@ -93,9 +93,9 @@ class DatabaseManager {
         if (err) {
           reject(err);
         }
-        console.log(res);
-        resolve(res);
+        // console.log(res);
         this.pool.end();
+        resolve(res.rows);
       });
     });
   }
