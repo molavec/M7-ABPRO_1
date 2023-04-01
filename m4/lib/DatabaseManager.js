@@ -117,7 +117,7 @@ class DatabaseManager {
         if (err) {
           reject(err);
         }
-        console.log(res);
+        //console.log(res);
         resolve(res);
         this.pool.end();
       });

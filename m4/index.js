@@ -28,7 +28,7 @@ const get = async () => {
 const balance = async () => {
   const accountId = process.argv[3];
   const result = await dbm.getBalance(accountId);
-  console.log(result);
+  console.log(result.rows[0]);
   process.exit(0);
 };
 
