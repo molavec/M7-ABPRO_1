@@ -38,12 +38,14 @@ const loginUser = (email, password) => {
     pool.query(query, (err, result) => {
       if (err) reject(err);
       pool.release;
+      
+      console.log(result.rowCount)
 
-      const response = `
-      <p>Usuario logeado exitosamente!</p>
-      <p><a href='/'>Volver</a></p>
-      `
-      resolve (response)
+      const response = (result.rowCount > 0)
+        ? "<p>Usuario logeado exitosamente!</p>" 
+        : "<p>Credenciales invalidas</p>" ;
+      
+      resolve (response +  "<p><a href='/'>Volver</a></p>");
 
     })
 
