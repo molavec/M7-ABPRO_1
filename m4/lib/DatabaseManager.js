@@ -57,11 +57,6 @@ class DatabaseManager {
       returning *;
     `;
 
-    console.log('description', description);
-    console.log('date', date);
-    console.log('amount', amount);
-    console.log('account', account);
-    
     const query = {
       // give the query a unique name
       name: 'add-transaccion',
@@ -76,7 +71,7 @@ class DatabaseManager {
         }
         // console.log('res', res);
         this.pool.end();
-        resolve(res);
+        resolve(res.rows[0]);
       });
     });
 

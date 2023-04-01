@@ -14,7 +14,7 @@ const add = async () => {
     amount,
     account
   );
-  console.log('result', result);
+  console.log('Último depósito: ', result);
   process.exit(0);
 };
 
