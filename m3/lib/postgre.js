@@ -38,7 +38,13 @@ const loginUser = (email, password) => {
     pool.query(query, (err, result) => {
       if (err) reject(err);
       pool.release;
-      resolve (result)
+
+      const response = `
+      <p>Usuario logeado exitosamente!</p>
+      <p><a href='/'>Volver</a></p>
+      `
+      resolve (response)
+
     })
 
   })
