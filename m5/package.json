@@ -1,7 +1,6 @@
 {
   "name": "m7-abpro_4",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "author": "",
   "license": "ISC",
@@ -12,9 +11,15 @@
   },
   "dependencies": {
     "pg": "^8.10.0",
-    "readline-sync": "^1.4.10"
+    "pg-hstore": "^2.3.4",
+    "readline-sync": "^1.4.10",
+    "sequelize": "^6.30.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.22"
-  }
+  },
+  "directories": {
+    "lib": "lib"
+  },
+  "description": ""
 }
