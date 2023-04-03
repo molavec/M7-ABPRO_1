@@ -1,5 +1,4 @@
 const { Pool, Client } = require('pg');
-const Cursor = require('pg-cursor');
 
 const HOST = 'localhost';
 const USER = 'root';
