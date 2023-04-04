@@ -15,7 +15,6 @@ class Medic extends Model {}
 Medic.init({
     medic_rut: {
       type: DataTypes.STRING,
-      autoIncrement: true,
       primaryKey: true
     },
     medic_name: {
@@ -26,7 +25,6 @@ Medic.init({
       type: DataTypes.STRING,
       allowNull: false
     },
-    Speciality
   },
   {
     sequelize,
