@@ -10,10 +10,11 @@ const sequelize = new Sequelize(
 
 class Consult extends Model { }
 
-const Patient = require('./paciente');
+const Patient = require('../orm/paciente');
+const Medic = require('../orm/medico');
 
 Consult.init({
-        id_consult: {
+        consult_id: {
             type: DataTypes.INTEGER,
             autoIncrement: true,
             primaryKey: true
@@ -27,26 +28,41 @@ Consult.init({
             allowNull: false
         },
         id_box: {
-            type: DataTypes.STRING,
-            allowNull: false
+            type: DataTypes.STRING(5),
+            allowNull: false,
+            unique: true
         },
-        id_lic: {
-            type: DataTypes.INTEGER,
-            allowNull: true
+        patient_rut: {
+            type: DataTypes.STRING(11),
+            //aqui se agrega la referencia al rut del paciente
+            references: {
+                model: Patient,
+                key: 'patient_rut'
+            }   
         },
-        rut_patient: {
-            type: DataTypes.STRING,
-            allowNull: false
-        },
-        rut_medic: {
-            type: DataTypes.STRING,
-            allowNull: false
+        medic_rut: {
+            type: DataTypes.STRING(11),
+            //aqui se agrega la referencia al rut del medico
+            references: {
+                model: Medic,
+                key: 'medic_rut'
+            }
         }
     },
     { 
         sequelize, 
         modelName: 'consult', 
     });
+
+//Aqui se define la relacion entre patient y consult
+
+Patient.hasMany(Consult, { foreignKey: 'patient_rut' });
+Consult.belongsTo(Patient, { foreignKey: 'patient_rut' });
+
+//Aqui se define la relacion entre medic y consult
+
+Medic.hasMany(Consult, { foreignKey: 'medic_rut' });
+Consult.belongsTo(Medic, { foreignKey: 'medic_rut' });
 
 
 module.exports = Consult;

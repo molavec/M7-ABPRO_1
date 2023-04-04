@@ -38,15 +38,15 @@ const insertMedic = async () => {
 
 const execute = async () => {
 
-  // 1. Crea tabla Medico
-  await createMedicTable();
-  // await insertMedic();
+  // 1. Crea tabla Especialidad
+  await createEspecialidadTable();
 
   // 1. Crea tabla Paciente
   await createPacienteTable();
-  
-  // 1. Crea tabla Especialidad
-  await createEspecialidadTable();
+
+  // 1. Crea tabla Medico
+  await createMedicTable();
+  // await insertMedic();
 
   // 1. Crea tabla Consulta
   await createConsultaTable();

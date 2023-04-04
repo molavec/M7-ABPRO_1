@@ -5,6 +5,7 @@ services:
 
   db:
     image: postgres
+    #agrega hostname para poder ingresar desde adminer
     hostname: postgres
     container_name: postgres
     restart: always
