@@ -5,9 +5,7 @@
   "author": "",
   "license": "ISC",
   "scripts": {
-    "add": "node index.js add \"Depósito enero\" \"2023/01/01\" 10000 1",
-    "get": "node index.js get 1",
-    "balance": "node index.js balance 1"
+    "dev": "nodemon index.js"
   },
   "dependencies": {
     "pg": "^8.10.0",

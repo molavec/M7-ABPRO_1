@@ -109,3 +109,18 @@ SELECT * FROM Consulta;
 
 -- Select Licencia
 SELECT * FROM Licencia;
+
+
+
+-- Check Tables
+SELECT *
+FROM pg_catalog.pg_tables
+WHERE schemaname != 'pg_catalog' AND 
+    schemaname != 'information_schema';
+
+
+-- Check Medic TABLE
+Show CREATE Table;
+
+-- Select Medics
+Select * from "Medics";
