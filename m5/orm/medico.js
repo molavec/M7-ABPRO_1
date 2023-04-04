@@ -26,7 +26,8 @@ Medic.init({
       allowNull: false
     },
     speciality_id: {
-      type: DataTypes.INTEGER, 
+      type: DataTypes.INTEGER,
+      allowNull: false,
       references: {
         model: Speciality,
         key: 'speciality_id'

@@ -33,6 +33,7 @@ License.init({
         },
         medic_rut: {
             type: DataTypes.STRING(11),
+            allowNull: false,
             //aqui se agrega la referencia al rut del medico
             references: {
                 model: Medic,
@@ -41,6 +42,7 @@ License.init({
         },
         consult_id: {
             type: DataTypes.INTEGER,
+            allowNull: false,
             //Aqui se agrega la referencia al id de consulta
             references: {
                 model: Consult,

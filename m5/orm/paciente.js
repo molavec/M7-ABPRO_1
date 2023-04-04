@@ -20,7 +20,7 @@ Patient.init({
             allowNull: false
         },
 
-        patiend_add:{
+        patient_add:{
             type: DataTypes.STRING(100),
             allowNull: false
         }},

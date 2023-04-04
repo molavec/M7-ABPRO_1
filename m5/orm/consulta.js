@@ -34,6 +34,7 @@ Consult.init({
         },
         patient_rut: {
             type: DataTypes.STRING(11),
+            allowNull: false,
             //aqui se agrega la referencia al rut del paciente
             references: {
                 model: Patient,
@@ -42,6 +43,7 @@ Consult.init({
         },
         medic_rut: {
             type: DataTypes.STRING(11),
+            allowNull: false,
             //aqui se agrega la referencia al rut del medico
             references: {
                 model: Medic,
