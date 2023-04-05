@@ -70,6 +70,8 @@ node index.js eliminar 12.345.678-9
 
 Utilizar el siguiente comando en la carperta `m2` para probar
 
+Nota: como somos unos estudiantes adelantados ya en el m1 estabamos utilizando el declare.
+
 ``` bash
 node index.js nuevos estudiantes.json
 ```
@@ -100,3 +102,10 @@ node index.js balance 1
 ```
 
 
+### m5
+
+Utilizar los siguientes comandos en la carperta `m5` para probar
+
+```bash
+node index.js 
+```
