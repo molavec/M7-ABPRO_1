@@ -8,29 +8,39 @@ const sequelize = new Sequelize(
   + `${dbInfo.PORT}/`
   + `${dbInfo.DATABASE}`);
 
-const Speciality = require('./especialidad');
+const Speciality = require('../orm/especialidad');
 
 class Medic extends Model {}
 
 Medic.init({
     medic_rut: {
-      type: DataTypes.STRING,
-      autoIncrement: true,
+      type: DataTypes.STRING(11),
       primaryKey: true
     },
     medic_name: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(100),
       allowNull: false
     },
     medic_add: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(100),
       allowNull: false
     },
-    Speciality
+    speciality_id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: {
+        model: Speciality,
+        key: 'speciality_id'
+      }
+  }
   },
   {
     sequelize,
     modelName: 'medic',
   });
+
+
+Speciality.hasOne(Medic, { foreignKey: 'speciality_id' });
+Medic.belongsTo(Speciality, { foreignKey: 'speciality_id' });
 
 module.exports = Medic;

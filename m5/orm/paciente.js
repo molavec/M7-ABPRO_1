@@ -11,24 +11,20 @@ const sequelize = new Sequelize(
 class Patient extends Model {}
 
 Patient.init({
-        patient_id:{
-            type: DataTypes.INTEGER, 
-            autoIncrement: true,
-            primaryKey: true
+    patient_rut: {
+        type: DataTypes.STRING(11),
+        primaryKey: true
         },
         patient_name:{
-            type: DataTypes.STRING,
+            type: DataTypes.STRING(100),
             allowNull: false
         },
-        patient_rut: {
-            type: DataTypes.STRING,
+
+        patient_add:{
+            type: DataTypes.STRING(100),
             allowNull: false
-        },
-        patiend_add:{
-            type: DataTypes.STRING,
-            allowNull: false
-        }
-    },
+        }},
+    
     {
         sequelize,
         modelName: 'patient'
