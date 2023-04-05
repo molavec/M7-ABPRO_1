@@ -17,7 +17,7 @@ pool.connect();
 /**
  * add
  */
-const addStudents = (estudiantes) => {
+const addStudent = (estudiante) => {
   const queryText = `
     INSERT INTO 
     estudiante 
@@ -59,10 +59,111 @@ const addStudents = (estudiantes) => {
     } else {
       console.log('No fue posible agregar estudiante!');
     }
+    pool.release;
+  });
+}
+
+/**
+ * add
+ */
+const addStudents = (estudiantes) => {
+  estudiantes.forEach(estudiante => {
+    addStudent(estudiante)
+  });
+}
+
+
+
+/**
+ * select all student
+ */
+const getAllStudents = () => {
+  //TODO
+  const query = 'SELECT * FROM estudiante;';
+  pool.query(query, (err, res) => {
+    if (err) {
+      console.log('Error: ', err);
+    }
+    let arreglo = Object.values(res.rows)
+    // console.table(res.rows);
+    console.log(arreglo)
     pool.end();
   });
 }
 
-module.exports = { 
+
+/**
+ * select by rut 
+ */
+const getStudentByRut = (rut) => {
+  //TODO
+  const query = `select * from estudiante where rut = '${rut}' `;
+  pool.query(query, (err, res) => {
+    if (err) {
+      console.log('Error: ', err);
+    }
+    console.table(res.rows);
+    pool.end();
+  });
+}
+
+
+/**
+ * update Student
+ */
+const updateStudent = (estudianteEditado) => {
+
+  const query = `
+    UPDATE estudiante 
+    SET 
+      nombre='${estudianteEditado.nombre}',
+      nivel='${estudianteEditado.nivel}', 
+      curso='${estudianteEditado.curso}' 
+    WHERE 
+      rut='${estudianteEditado.rut}'
+    `;
+  pool.query(query, (err, res) => {
+    if (err) {
+      console.log('Error: ', err);
+      return;
+    }
+    if (res.rowCount > 0) {
+      console.log('Se actualiza  el usuario');
+    } else {
+      console.log('No se encontró el usuario a actualiza r.');
+    }
+    pool.end();
+  });
+}
+
+
+/**
+ * delete student
+ */
+const deleteStudent = (rut) => {
+  console.log('Ejecucion delete...')
+  //TODO
+  const query = `DELETE FROM estudiante WHERE rut='${rut}'`;
+  pool.query(query, (err, res) => {
+    if (err) {
+      console.log('Error: ', err);
+      return;
+    }
+
+    if (res.rowCount > 0) {
+      console.log('Se elimina el usuario');
+    } else {
+      console.log('No se encontró el usuario a eliminar.');
+    }
+    pool.end();
+  });
+}
+
+module.exports = {
+  addStudent,
   addStudents,
+  getAllStudents,
+  getStudentByRut,
+  updateStudent,
+  deleteStudent
 };
